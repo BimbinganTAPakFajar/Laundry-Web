@@ -53,7 +53,7 @@ export default function Home() {
 
           <div className='w-44 h-14 rounded-t-lg bg-blue-700'>
             <div className='pt-5 pl-6 flex gap-3'>
-              <img className='w-5 h-5' src="/plane.png" alt="testint pict" />
+              <Image width={10} height={10} className='w-5 h-5' src="/plane.png" alt="testint pict" />
               <p className='text-white font-medium'>Pelayanan</p>  
             </div>
           </div>
@@ -61,19 +61,19 @@ export default function Home() {
           <div className='w-full  rounded-b-3xl rounded-tr-3xl shadow-2xl'>
             <ul className='flex gap-28 p-16'>
               <li className='flex items-center gap-3'>
-                <img className='w-7 h-7 rounded-md bg-slate-400' src="/plane-down.png" alt="" />
+                <Image width={10} height={10}  className='w-7 h-7 rounded-md bg-slate-400' src="/plane-down.png" alt="" />
                 <p className='text-xl font-semibold'>Cuci Basah</p>
               </li>
               <li className='flex items-center gap-3'>
-                <img className='w-7 h-7 rounded-md bg-slate-400' src="/plane-up.png" alt="" />
+                <Image width={10} height={10}  className='w-7 h-7 rounded-md bg-slate-400' src="/plane-up.png" alt="" />
                 <p className='text-xl font-semibold'>Cuci Kering</p>
               </li>
               <li className='flex items-center gap-3'>
-                <img className='w-7 h-7 rounded-md bg-slate-400' src="/schedule.png" alt="" />
+                <Image width={10} height={10}  className='w-7 h-7 rounded-md bg-slate-400' src="/schedule.png" alt="" />
                 <p className='text-xl font-semibold'>Cuci Setrika</p>
               </li>
               <li className='flex items-center gap-3'>
-                <img className='w-7 h-7 rounded-md bg-slate-400' src="/seat.png" alt="" />
+                <Image width={10} height={10}  className='w-7 h-7 rounded-md bg-slate-400' src="/seat.png" alt="" />
                 <p className='text-xl font-semibold'>Setrika</p>
               </li>
             </ul>
@@ -85,17 +85,17 @@ export default function Home() {
           <div className='grid grid-cols-2 grid-rows-2 gap-4'>
             <div className='row-start-1 row-span-1'>
               <div className='w-72 h-60 bg-slate-400 rounded-3xl'>
-                <img src="" alt="" />
+                <Image src="" alt="" />
               </div>
             </div>
             <div className='row-start-2 col-start-1 row-span-1'>
               <div className='w-72 h-60 bg-slate-400 rounded-3xl'>
-                <img src="" alt="" />
+                <Image src="" alt="" />
               </div>
             </div>
             <div className='col-start-2 row-span-2'>
               <div className='w-80 h-[510px] bg-slate-400 rounded-3xl'>
-                <img src="" alt="" />
+                <Image src="" alt="" />
               </div>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function Home() {
           <h1 className='text-4xl font-bold flex justify-center pb-10'>Tentang Layanan Kami</h1>
 
           <div className="card w-96 bg-base-100 shadow-xl rounded-xl pb-6 overflow-hidden">
-            <figure><img className='w-full h-full' src="/beach.jpg" alt="Shoes" /></figure>
+            <figure><Image width={10} height={10}  className='w-full h-full' src="/beach.jpg" alt="Shoes" /></figure>
             <div className="card-body">
               <h2 className="card-title text-2xl font-semibold pt-2 pl-6">Cuci Basah</h2>
               <p className='pt-2 pl-6'>Deskripsi Mengenai Cuci Basah</p>
