@@ -70,7 +70,7 @@ export default function Home() {
               </li>
               <li className='flex items-center gap-3'>
                 <img className='w-7 h-7 rounded-md bg-slate-400' src="/schedule.png" alt="" />
-                <p className='text-xl font-semibold'>Cuci Setrika7</p>
+                <p className='text-xl font-semibold'>Cuci Setrika</p>
               </li>
               <li className='flex items-center gap-3'>
                 <img className='w-7 h-7 rounded-md bg-slate-400' src="/seat.png" alt="" />
