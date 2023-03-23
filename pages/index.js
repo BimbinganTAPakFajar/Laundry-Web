@@ -45,7 +45,7 @@ export default function Home() {
         <div className='pt-32'>
           <h1 className='text-2xl flex justify-center text-center'>Life is Too Short For a Wide And Beautiful World</h1>
 
-          <h1 className='text-6xl flex justify-center text-center'>Enjoy Your Tour With Heavenly <br />Experience You've Never Had</h1>
+          <h1 className='text-6xl flex justify-center text-center'>Enjoy Your Tour With Heavenly <br />Experience You&apos;ve Never Had</h1>
         </div>
 
         {/* Card Pelayanan */}
@@ -54,6 +54,7 @@ export default function Home() {
           <div className='w-44 h-14 rounded-t-lg bg-blue-700'>
             <div className='pt-5 pl-6 flex gap-3'>
               <Image width={10} height={10} className='w-5 h-5' src="/plane.png" alt="testint pict" />
+              <Image></Image>
               <p className='text-white font-medium'>Pelayanan</p>  
             </div>
           </div>
@@ -103,7 +104,7 @@ export default function Home() {
           <div className='pl-10'>
             <p className='text-lg font-semibold text-blue-600'>New For You</p>
             <h1 className='text-4xl font-bold leading-relaxed'>Pelayanan Laundry <br /> Yang Sederhana <br /> Untuk Orang Sibuk</h1>
-            <h2 className='text-lg text-gray-500'>Lorem Ipsum is simply dummy text of the printing <br /> and typesetting industry. Lorem Ipsum has been the <br /> industry's standard dummy text ever since the 1500s</h2>
+            <h2 className='text-lg text-gray-500'>Lorem Ipsum is simply dummy text of the printing <br /> and typesetting industry. Lorem Ipsum has been the <br /> industry&apos;s standard dummy text ever since the 1500s</h2>
 
             <div className='pt-10'>
               <ul className='flex gap-8'>
