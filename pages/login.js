@@ -17,18 +17,18 @@ export default function Login() {
 
             <div className="pt-10 flex justify-center">
 
-                <form className="grid gap-y-4" action="">
-                    <div>
+                <form className="flex items-center gap-x-40" action="">
+                    <div className="w-full">
                         <label htmlFor="email" className="">Email</label>
                         <div>
-                            <input className="bg-[#ababab] w-64 h-9 rounded-lg" type="email" name="email" typeof="email" />
+                            <input className="bg-[#ababab] w-full h-9 p-2.5 rounded-lg" type="email" name="email" typeof="email" />
                         </div>
                     </div>
                     
-                    <div>
+                    <div className="w-full">
                         <label htmlFor="email" className="">Password</label>
                         <div>
-                            <input className="bg-[#ababab] w-64 h-9 rounded-lg" type="password" name="password" typeof="password" />
+                            <input className="bg-[#ababab] w-full p-2.5 h-9 rounded-lg" type="password" name="password" typeof="password" />
                         </div>
                     </div>
                 </form>   

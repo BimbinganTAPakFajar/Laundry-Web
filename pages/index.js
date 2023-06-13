@@ -53,8 +53,8 @@ export default function Home({ nav, landing }) {
             </div>
           </div>
 
-          <div className="w-full  rounded-b-3xl rounded-tr-3xl shadow-2xl">
-            <ul className="flex gap-28 p-16">
+          <div className="w-full rounded-b-3xl rounded-tr-3xl shadow-2xl">
+            <ul className="flex justify-center gap-28 p-16">
               <li className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg flex justify-center items-center bg-[#E8EDFF]">
                   <Image
@@ -108,8 +108,8 @@ export default function Home({ nav, landing }) {
         </div>
 
         {/* Content 1 */}
-        <div className="pt-32 flex">
-          <div className="grid grid-cols-2 grid-rows-2 gap-8">
+        <div className="pt-32 flex justify-end">
+          <div className="grid grid-cols-2 grid-rows-2 gap-6">
             <div className="row-start-1 row-span-1">
               <div className="w-72 h-60 bg-slate-400 rounded-3xl">
                 <Image

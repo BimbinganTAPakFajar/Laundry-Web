@@ -1,5 +1,6 @@
 import axios from "axios";
 import DefaultLayout from "@/components/layout/defaultLayout";
+import Link from "next/link";
 export async function getServerSideProps(context) {
     const res = await axios.get("http://127.0.0.1:1337/api/laundry-services?populate=*");
     console.log(res, "hehehehe");
@@ -12,32 +13,38 @@ export async function getServerSideProps(context) {
 
 export default function Service({service}) {
 console.log(service);
-const generatecards = () => {
-    return service.map(({attributes:{
+const generatecards = () => 
+        service.map(({
+        id: id,
+        attributes:{
         nameService,
         priceService,
         serviceDescription,
-        pictService
+        pictService:{data: [{attributes:{url}}]}
     }})=> {
         return (
-            <div className="card w-96 bg-base-100 shadow-xl rounded-xl pb-6 overflow-hidden">
-            <img src={ {pictService} } />
-            <div className="card-body">
-                <h2 className="card-title text-2xl font-semibold pt-2 pl-6">
-                    {nameService}
-                </h2>
-                <p className="pt-2 pl-6">{serviceDescription}</p>
-                <div className="card-actions flex justify-end pt-10 pr-6">
-                    <button className="bg-blue-600 w-36 h-12 rounded-xl text-white">
-                        Pesan
-                    </button>
+            <div className="w-96 bg-base-100 shadow-xl rounded-xl pb-6 overflow-hidden">
+                <img className="w-full h-1/3" src={url} />
+                <div className=""> 
+                    <h2 className="card-title text-2xl font-semibold pt-2 pl-6">
+                        {nameService}
+                    </h2>
+                    <p className="pt-2 pl-6">{serviceDescription}</p>
+                    <div className="flex justify-between items-center">
+                        <div className="flex items-center ml-6">
+                            <p className="font-bold text-2xl">Rp{priceService}/Kg</p>
+                        </div>
+                        <div className="mr-10">
+                            <Link href={`/servicedetail/${id}`} className="bg-blue-600 w-32 h-10 rounded-2xl text-white">
+                                Pesan
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
-                {priceService}
             </div>
         )
     })
-}
+
     return (
         <main>
             
