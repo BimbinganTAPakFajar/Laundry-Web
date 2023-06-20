@@ -1,58 +1,50 @@
 import axios from "axios";
 import DefaultLayout from "@/components/layout/defaultLayout";
+import {useRef} from "react";
+import React, { ReactNode } from 'react';
 
-export default function Login() {
 
 
+export default function Login({user}) {
+
+    console.log(user);
+    const userName = useRef("");
+    const pass = useRef("");
+
+    const onSubmit = async () => {};
     return (
 
-        <main className="">
-
-            <div className="flex flex-col justify-center pt-36">
-                <div className="grid gap-y-1">
-                    <h2 className="text-2xl font-semibold">Selamat Datang Kembali</h2>
-                    <h3 className="text-base ">Mau Servis Apa Hari Ini?</h3>
+        <div className="flex justify-center pt-44">
+            <div className="p-4 w-1/4 bg-white rounded-lg shadow border-2 border-gray-100">
+                
+                <div>
+                    <h1 className="text-3xl font-bold">Selamat Datang Kembali</h1>
+                    <h2 className="leading-tight tracking-tight text-gray-900 mb-6 text-lg">Mau Servis Apa Hari Ini?</h2>
+    
+                    <form className="space-y-6" action="">
+    
+                        <div>
+                            <label className="mb-2 text-sm font-medium text-gray-900" htmlFor="Nama">Email</label>
+                            <input onChange={(e) => {userName.current = e.target.value}} className="w-full border border-gray-300 bg-gray-50 rounded-lg p-2.5 focus:ring-primary-600 focus:border-primary-600 " type="email" placeholder="user@email.com" />
+                        </div>
+    
+                        <div>
+                            <label className="mb-2 text-sm font-medium text-gray-900" htmlFor="Nama">Password</label>
+                            <input onChange={(e) => {pass.current = e.target.value}} className="w-full border border-gray-300 bg-gray-50 rounded-lg p-2.5 focus:ring-primary-600 focus:border-primary-600 " type="password" placeholder="*****" />
+                        </div>
+    
+                        <div className="flex justify-center">
+                            <button onClick={onSubmit} className="w-1/5 h-8 rounded-lg text-white bg-blue-600 flex justify-center items-center">
+                                Masuk
+                            </button>
+                        </div>
+    
+                    </form>
+    
                 </div>
+    
             </div>
-
-            <div className="pt-10 flex justify-center">
-
-                <form className="flex items-center gap-x-40" action="">
-                    <div className="w-full">
-                        <label htmlFor="email" className="">Email</label>
-                        <div>
-                            <input className="bg-[#ababab] w-full h-9 p-2.5 rounded-lg" type="email" name="email" typeof="email" />
-                        </div>
-                    </div>
-                    
-                    <div className="w-full">
-                        <label htmlFor="email" className="">Password</label>
-                        <div>
-                            <input className="bg-[#ababab] w-full p-2.5 h-9 rounded-lg" type="password" name="password" typeof="password" />
-                        </div>
-                    </div>
-                </form>   
-
-            </div>
-
-            <div className="pt-14 flex justify-between items-center">
-                <hr className="w-2/5 border-black" />
-                <p>atau</p>
-                <hr className="w-2/5 border-black" />
-            </div>
-
-            <div className="flex justify-center items-center pt-9">
-                <p>Belum punya akun?</p>
-                <a className="text-sky-600" href="">Daftar</a>
-            </div>
-
-            <div className="flex justify-center items-center pt-9">
-                <button className="bg-blue-600 w-1/4 h-9 rounded-lg text-white ">
-                    Masuk ke akun anda
-                </button>
-            </div>
-
-        </main>
+        </div>
 
 
     )

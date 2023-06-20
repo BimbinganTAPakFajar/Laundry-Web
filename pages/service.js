@@ -23,9 +23,11 @@ const generatecards = () =>
         pictService:{data: [{attributes:{url}}]}
     }})=> {
         return (
-            <div className="w-96 bg-base-100 shadow-xl rounded-xl pb-6 overflow-hidden">
-                <img className="w-full h-1/3" src={url} />
-                <div className=""> 
+            <div className="w-96 h-full bg-base-100 shadow-xl rounded-xl pb-6 overflow-hidden flex flex-col justify-center items-center">
+                <div className="aspect-w-3 aspect-h-5 w-full">
+                    <img className="object-cover w-full h-full" src={url} alt="" />
+                </div>
+                <div className="px-6 py-4"> 
                     <h2 className="card-title text-2xl font-semibold pt-2 pl-6">
                         {nameService}
                     </h2>
@@ -34,14 +36,16 @@ const generatecards = () =>
                         <div className="flex items-center ml-6">
                             <p className="font-bold text-2xl">Rp{priceService}/Kg</p>
                         </div>
-                        <div className="mr-10">
-                            <Link href={`/servicedetail/${id}`} className="bg-blue-600 w-32 h-10 rounded-2xl text-white">
-                                Pesan
+                        <div>
+                            <Link href={`/servicedetail/${id}`} className="">
+                                <p className="flex justify-center items-center bg-blue-600 w-32 h-10 rounded-2xl text-white">Pesan</p>
                             </Link>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            
         )
     })
 
@@ -51,8 +55,8 @@ const generatecards = () =>
             <h1 className="text-4xl font-bold flex justify-center w-full">Servis Kami</h1>
 
 
-            <div className="flex justify-between gap-10">
-                {generatecards()}
+            <div className="grid grid-cols-2 gap-4 justify-center items-center">
+                {generatecards()}   
             </div>
         </main>
     )
