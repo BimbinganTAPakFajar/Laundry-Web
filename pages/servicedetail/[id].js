@@ -1,14 +1,17 @@
 import axios from "axios";
-import DefaultLayout from "@/components/layout/defaultLayout";
+import DefaultLayout from "@/components/layout/DefaultLayout";
+import OrderForm from "@/components/product/OrderForm";
+import { useSession, signIn } from "next-auth/react";
+
 
 export async function getServerSideProps(context) {
-
     const {id} = context.query;
     const chosenService = id
     const res = await axios.get("http://127.0.0.1:1337/api/laundry-services/" + chosenService + "?populate=*");
-    console.log(res, "hehehehe");
+    // const res = await axios.get("http://127.0.0.1:1337/api/laundry-services?populate=*");
+    // console.log(res, "hehehehe");
     const service = res.data.data;
-    console.log(service, "test");
+    // console.log(service, "test");
     return {
       props: { service }, // will be passed to the page component as props
     };
@@ -17,7 +20,16 @@ export async function getServerSideProps(context) {
 
 export default function ServiceDetail({service}){
 
-// console.log(service);
+    const { status } = useSession({
+        required: true,
+        onUnauthenticated() {
+            return "Anda harus memiliki akun untuk memesan"
+        }
+    })
+
+    if (status == "loading") {
+        return signIn();
+    }
     
     return(
 
@@ -48,56 +60,7 @@ export default function ServiceDetail({service}){
                             <h1 className="text-2xl">Alamat Pengiriman</h1>
                         </div>
                         
-                        <form className="w-full " action="">
-                            <div className="flex gap-x-14 ">
-                                <div>
-                                    <label htmlFor="nama">Nama</label>
-                                    <input className="w-72 h-8 p-2.5 rounded-xl border-2 border-gray-400 " type="text" />
-                                </div>
-                                <div className="">
-                                    <label htmlFor="NomorHp">Nomor Hp</label>
-                                    <input className="w-72 h-8 p-2.5 rounded-xl border-2 border-gray-400 " type="text" />
-                                </div>
-                            </div>
-
-                            <div className="pt-11">
-                                <label htmlFor="">Alamat Lengkap</label>
-                                <input className="w-full h-16 p-2.5 rounded-xl border-2 border-gray-400" type="text" />
-                            </div>
-
-                            <div className="flex gap-x-14 pt-11">
-                                <div>
-                                    <label htmlFor="nama">Tanggal Diambil</label>
-                                    <input className="w-72 h-8 p-2.5 rounded-xl border-2 border-gray-400 " type="date" />
-                                </div>
-                                <div className="">
-                                    <label htmlFor="NomorHp">Tanggal Dikirim</label>
-                                    <input className="w-72 h-8 p-2.5 rounded-xl border-2 border-gray-400 " type="date" />
-                                </div>
-                            </div>
-
-                            <div className="flex gap-x-14 pt-11">
-                                <div>
-                                    <label htmlFor="nama">Provinsi</label>
-                                    <input className="w-72 h-8 p-2.5 rounded-xl border-2 border-gray-400 " type="text" />
-                                </div>
-                                <div className="">
-                                    <label htmlFor="NomorHp">Kota</label>
-                                    <input className="w-72 h-8 p-2.5 rounded-xl border-2 border-gray-400 " type="text" />
-                                </div>
-                            </div>
-
-                            <div className="pt-11">
-                                <label htmlFor="">Kecamatan</label>
-                                <input className="w-full h-8 p-2.5 rounded-xl border-2 border-gray-400" type="text" />
-                            </div>
-
-                            <div className="pt-11">
-                                <button className="bg-green-600 w-32 h-10 rounded-2xl text-white">
-                                    Pesan
-                                </button>
-                            </div>
-                        </form>
+                        <OrderForm/>
 
 
                     </div>

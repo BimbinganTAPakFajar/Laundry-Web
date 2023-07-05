@@ -1,5 +1,5 @@
 import axios from "axios";
-import DefaultLayout from "@/components/layout/defaultLayout";
+import DefaultLayout from "@/components/layout/DefaultLayout";
 import Link from "next/link";
 export async function getServerSideProps(context) {
     const res = await axios.get("http://127.0.0.1:1337/api/laundry-services?populate=*");
@@ -55,7 +55,7 @@ const generatecards = () =>
             <h1 className="text-4xl font-bold flex justify-center w-full">Servis Kami</h1>
 
 
-            <div className="grid grid-cols-2 gap-4 justify-center items-center">
+            <div className="grid grid-cols-2 gap-y-4 justify-center items-center">
                 {generatecards()}   
             </div>
         </main>
