@@ -1,8 +1,8 @@
 import NavBar from "../NavBar";
 
-export default function DefaultLayout({children}){
+export default function DefaultLayout({ children }) {
     return (
-        <div className="max-w-screen-2xl">
+        <div className="">
             <NavBar />
             {children}
         </div>

@@ -75,11 +75,11 @@ export default function Service({ service }) {
 
   return (
     <main>
-      <h1 className="text-4xl font-bold flex justify-center w-full">
+      <h1 className="text-4xl font-bold flex justify-center w-full mb-24">
         Servis Kami
       </h1>
 
-      <div className="grid grid-cols-2">{generatecards()}</div>
+      <div className="grid grid-cols-2 gap-64 mb-10">{generatecards()}</div>
     </main>
   );
 }

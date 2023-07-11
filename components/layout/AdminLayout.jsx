@@ -33,7 +33,7 @@ export default function AdminLayout({ children }) {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto">
-          <ul className="space-y-2 font-medium">{}</ul>
+          <ul className="space-y-2 font-medium">{ }</ul>
         </div>
       </aside>
 

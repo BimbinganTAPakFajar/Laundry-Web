@@ -24,22 +24,24 @@ export default function Home({ landing }) {
   return (
     <div className="w-full">
       {/* With Background Cover */}
-      <div>
+      <div className="bg-[url('/homepg.jpg')] bg-cover">
         <div className="pt-32">
-          <div className="flex justify-center items-center text-2xl text-center">
+          <div className="flex justify-center items-center text-2xl text-center text-white">
             {slogan_1}
           </div>
-          <div className="text-center text-6xl font-bold">{slogan_2}</div>
+          <div className="flex justify-center">
+            <div className="w-5/12 text-center text-white text-6xl font-bold">
+              {slogan_2}
+            </div>
+          </div>
         </div>
 
         <div className="flex justify-center">
-          <div className="flex flex-col justify-center mb-44 pt-40">
-            <div className="">
-              <div className="w-44 h-14 rounded-t-lg bg-blue-600">
-                <div className="pt-5 pl-6 flex gap-3">
-                  <img className="w-5 h-5" src="/tipe laundry.png" alt="" />
-                  <p className="text-white font-medium">Pelayanan</p>
-                </div>
+          <div className="flex flex-col justify-center mb-24 pt-24">
+            <div className="w-44 h-14 rounded-t-lg bg-blue-600">
+              <div className="pt-5 pl-6 flex gap-3">
+                <img className="w-5 h-5" src="/tipe laundry.png" alt="" />
+                <p className="text-white font-medium">Pelayanan</p>
               </div>
             </div>
             <div className="flex w-full rounded-b-3xl rounded-tr-3xl shadow-2xl bg-white">
@@ -74,7 +76,7 @@ export default function Home({ landing }) {
         </div>
       </div>
 
-      <div className="pt-32 flex justify-center mb-10">
+      <div className="pt-32 flex justify-center mb-44">
         <div className="grid rid-cols-2 grid-rows-2 gap-6">
           <div className="row-start-1 row-span-1">
             <img className="w-full h-60 rounded-3xl" src="/photo1.jpg" alt="" />
@@ -108,7 +110,7 @@ export default function Home({ landing }) {
           </div>
 
           <div className="pt-14">
-            <a href="">
+            <a href="/service">
               <div className="w-36 h-12 bg-blue-600 rounded-xl">
                 <p className="flex justify-center pt-3 text-white font-semibold">
                   Get Started
@@ -116,6 +118,27 @@ export default function Home({ landing }) {
               </div>
             </a>
           </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row justify-between gap-8 mb-48 px-48">
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <h1 class="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 dark:text-white pb-4">
+            Tentang Kami
+          </h1>
+          <p class="font-normal text-base text-gray-600 dark:text-white">
+            Selamat datang di My Laundry, mitra andalan Anda dalam kebutuhan
+            laundry yang berkualitas dan terpercaya. Dengan komitmen kami untuk
+            memberikan layanan terbaik, kami siap membantu Anda menjaga pakaian
+            tetap bersih, segar, dan terawat setiap hari.
+          </p>
+        </div>
+        <div class="w-1/2">
+          <img
+            class="w-full h-full rounded-3xl"
+            src="/aboutus.jpg"
+            alt="Laundry Scene"
+          />
         </div>
       </div>
     </div>
