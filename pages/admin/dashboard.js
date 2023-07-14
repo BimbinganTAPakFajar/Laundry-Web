@@ -66,7 +66,7 @@ export default function Dashboard({ orderservice, service }) {
             {/* <td class="px-6 py-4">{isReady ? "Ya" : "Tidak"}</td> */}
             <td>
               {isReady ? (
-                <div>
+                <div className="text-center font-bold text-green-600">
                   <p>Selesai</p>
                 </div>
               ) : (
@@ -272,11 +272,11 @@ export default function Dashboard({ orderservice, service }) {
 
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
+      {/* <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">
-              Iddadawdda
+              Nomor
             </th>
             <th scope="col" class="px-6 py-3">
               Nama Servis
@@ -296,8 +296,13 @@ export default function Dashboard({ orderservice, service }) {
           </tr>
         </thead>
         <tbody>{generatetableservice()}</tbody>
-      </table>
-      <table class="mt-10 w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
+      </table> */}
+
+      <div className="pb-6 pt-4">
+        <h1 className="font-bold text-2xl ">List Pesanan</h1>
+      </div>
+
+      <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">

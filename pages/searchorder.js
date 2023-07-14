@@ -1,6 +1,33 @@
 import DefaultLayout from "@/components/layout/DefaultLayout";
+import axios from "axios";
+import { useEffect, useState, useCallback } from "react";
 
-export default function SearchOrder() {
+// export async function getServerSideProps(context) {
+//   const res = await axios.get(
+//     `http://127.0.0.1:1337/api/order-services?populate=*&filters[UUID][$eq]=${id}`
+//   );
+//   const orderservice = res.data.data;
+//   return {
+//     props: { orderservice }, // will be passed to the page component as props
+//   };
+// }
+
+export default function SearchOrder({ orderservice }) {
+  const [uuid, setUuid] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get(
+        `http://127.0.0.1:1337/api/order-services?filters[UUID][$eq]=${uuid}&populate=*`
+      );
+      setSearchResult(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-screen">
       <div className="flex justify-center mb-4">
@@ -11,14 +38,14 @@ export default function SearchOrder() {
         <form className="w-1/2">
           <label
             for="default-search"
-            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
           >
             Search
           </label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
-                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                className="w-4 h-4 text-gray-500 dark:text-gray-400"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -34,20 +61,78 @@ export default function SearchOrder() {
               </svg>
             </div>
             <input
+              onChange={(e) => setUuid(e.target.value)}
               type="search"
               id="default-search"
-              class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search Mockups, Logos..."
+              className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Masukkan Id Pemesanan"
               required
             />
             <button
               type="submit"
-              class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={handleSearch}
+              className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Search
             </button>
           </div>
         </form>
+      </div>
+
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-3/4 mt-10">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Nama
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Servis
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Berat Laundry
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Tanggal Pengambilan
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Total Harga
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Siap Diambil
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {searchResult.map((entity) => (
+              <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {entity.name}
+                </th>
+                <td className="px-6 py-4">{entity.name}</td>
+                <td className="px-6 py-4">{entity.weight}</td>
+                <td className="px-6 py-4">{entity.pickupDate}</td>
+                <td className="px-6 py-4">{entity.totalPrice}</td>
+                <td className="px-6 py-4">{entity.isReady}</td>
+              </tr>
+            ))}
+
+            {/* <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              ></th>
+              <td className="px-6 py-4">{orderservice.name}</td>
+              <td className="px-6 py-4"></td>
+              <td className="px-6 py-4"></td>
+              <td className="px-6 py-4"></td>
+              <td className="px-6 py-4"></td>
+            </tr> */}
+          </tbody>
+        </table>
       </div>
     </div>
   );

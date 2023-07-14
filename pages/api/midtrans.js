@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   console.log(data, "MIDTRANS DATA IN API ROUTE");
   try {
     await snap.createTransaction(data).then((transaction) => {
-      // transaction token
+      // token
       snapToken = transaction.token;
       console.log("transactionToken:", snapToken);
     });
