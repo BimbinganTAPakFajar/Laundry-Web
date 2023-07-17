@@ -3,6 +3,7 @@ import Image from "next/image";
 import axios from "axios";
 const inter = Inter({ subsets: ["latin"] });
 import DefaultLayout from "@/components/layout/DefaultLayout";
+import Link from "next/link";
 export async function getServerSideProps(context) {
   const res2 = await axios.get("http://127.0.0.1:1337/api/landing-page");
 
@@ -146,13 +147,13 @@ export default function Home({ landing }) {
           </div>
 
           <div className="pt-14">
-            <a href="/service">
+            <Link href="/service">
               <div className="w-36 h-12 bg-blue-600 rounded-xl">
                 <p className="flex justify-center pt-3 text-white font-semibold">
                   Get Started
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
