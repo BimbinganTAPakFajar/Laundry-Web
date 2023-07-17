@@ -5,8 +5,9 @@ const inter = Inter({ subsets: ["latin"] });
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import Link from "next/link";
 export async function getServerSideProps(context) {
-  const res2 = await axios.get("http://127.0.0.1:1337/api/landing-page");
-
+  const res2 = await axios.get(
+    `${process.env.STRAPI_API_URL}/api/landing-page`
+  );
   const landing = res2.data.data;
   return {
     props: { landing }, // will be passed to the page component as props

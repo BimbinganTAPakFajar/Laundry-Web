@@ -3,15 +3,15 @@ import AdminLayout from "@/components/layout/AdminLayout";
 import { useState } from "react";
 export async function getServerSideProps(context) {
   const res = await axios.get(
-    "http://127.0.0.1:1337/api/order-services?populate=*"
+    `${process.env.STRAPI_API_URL}/api/order-services?populate=*`
   );
-  const res2 = await axios.get(
-    "http://127.0.0.1:1337/api/laundry-services?populate=*"
-  );
+  // const res2 = await axios.get(
+  //   "http://127.0.0.1:1337/api/laundry-services?populate=*"
+  // );
   const orderservice = res.data.data;
-  const service = res2.data.data;
+  // const service = res2.data.data;
   return {
-    props: { orderservice, service }, // will be passed to the page component as props
+    props: { orderservice }, // will be passed to the page component as props
   };
 }
 
@@ -20,7 +20,7 @@ export default function Dashboard({ orderservice, service }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      "http://127.0.0.1:1337/api/order-services/$" + id
+      "${process.env.STRAPI_API_URL}/api/order-services/$" + id
     );
   };
 

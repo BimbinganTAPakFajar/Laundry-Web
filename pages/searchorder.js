@@ -20,7 +20,7 @@ export default function SearchOrder({ orderservice }) {
     e.preventDefault();
     try {
       const res = await axios.get(
-        `http://127.0.0.1:1337/api/order-services?filters[UUID][$eq]=${uuid}&populate=*`
+        `${process.env.STRAPI_API_URL}/api/order-services?filters[UUID][$eq]=${uuid}&populate=*`
       );
       setSearchResult(res.data.data);
     } catch (error) {

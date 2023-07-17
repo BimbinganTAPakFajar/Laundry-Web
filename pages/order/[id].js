@@ -6,7 +6,7 @@ import DefaultLayout from "@/components/layout/DefaultLayout";
 export async function getServerSideProps(context) {
   const { id } = context.query;
   const res = await axios.get(
-    `http://127.0.0.1:1337/api/order-services?populate=*&filters[UUID][$eq]=${id}`
+    `${process.env.STRAPI_API_URL}/api/order-services?populate=*&filters[UUID][$eq]=${id}`
   );
   const orderservice = res.data.data;
   const {
