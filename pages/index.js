@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import axios from "axios";
 const inter = Inter({ subsets: ["latin"] });
 import DefaultLayout from "@/components/layout/DefaultLayout";
@@ -40,7 +41,13 @@ export default function Home({ landing }) {
           <div className="flex flex-col justify-center mb-24 pt-24">
             <div className="w-44 h-14 rounded-t-lg bg-blue-600">
               <div className="pt-5 pl-6 flex gap-3">
-                <img className="w-5 h-5" src="/tipe laundry.png" alt="" />
+                <Image
+                  height={20}
+                  width={20}
+                  className="w-5 h-5"
+                  src="/tipe laundry.png"
+                  alt=""
+                />
                 <p className="text-white font-medium">Pelayanan</p>
               </div>
             </div>
@@ -48,25 +55,40 @@ export default function Home({ landing }) {
               <ul className="flex justify-center gap-28 p-16">
                 <li className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg flex justify-center items-center bg-[#E8EDFF]">
-                    <img className="w-8 h-8" src="/cuci basah.png" alt="" />
+                    <Image
+                      height={32}
+                      width={32}
+                      src="/cuci basah.png"
+                      alt=""
+                    />
                   </div>
                   <p className="text-lg font-semibold">Cuci Basah</p>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg flex justify-center items-center bg-[#E8EDFF]">
-                    <img className="w-8 h-8" src="/cuci kering.png" alt="" />
+                    <Image
+                      height={32}
+                      width={32}
+                      src="/cuci kering.png"
+                      alt=""
+                    />
                   </div>
                   <p className="text-lg font-semibold">Cuci Kering</p>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg flex justify-center items-center bg-[#E8EDFF]">
-                    <img className="w-8 h-8" src="/cuci setrika.png" alt="" />
+                    <Image
+                      height={32}
+                      width={32}
+                      src="/cuci setrika.png"
+                      alt=""
+                    />
                   </div>
                   <p className="text-lg font-semibold">Cuci Setrika</p>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg flex justify-center items-center bg-[#E8EDFF]">
-                    <img className="w-8 h-8" src="/setrika.png" alt="" />
+                    <Image height={32} width={32} src="/setrika.png" alt="" />
                   </div>
                   <p className="text-lg font-semibold">Setrika</p>
                 </li>
@@ -79,14 +101,28 @@ export default function Home({ landing }) {
       <div className="pt-32 flex justify-center mb-44">
         <div className="grid rid-cols-2 grid-rows-2 gap-6">
           <div className="row-start-1 row-span-1">
-            <img className="w-full h-60 rounded-3xl" src="/photo1.jpg" alt="" />
+            <Image
+              height={240}
+              width={360}
+              className="rounded-3xl"
+              src="/photo1.jpg"
+              alt=""
+            />
           </div>
           <div className="row-start-2 col-star-1 row-span-1">
-            <img className="w-full h-60 rounded-3xl" src="/photo3.jpg" alt="" />
+            <Image
+              height={240}
+              width={360}
+              className="rounded-3xl"
+              src="/photo3.jpg"
+              alt=""
+            />
           </div>
           <div className="col-start-2 row-span-2">
-            <img
-              className="w-80 h-[510px] rounded-3xl"
+            <Image
+              height={510}
+              width={336}
+              className="rounded-3xl"
               src="/photo2.jpg"
               alt=""
             />
@@ -134,8 +170,10 @@ export default function Home({ landing }) {
           </p>
         </div>
         <div class="w-1/2">
-          <img
-            class="w-full h-full rounded-3xl"
+          <Image
+            height={759.5}
+            width={506.33}
+            class="rounded-3xl"
             src="/aboutus.jpg"
             alt="Laundry Scene"
           />

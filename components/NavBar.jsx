@@ -2,6 +2,7 @@ import React from "react";
 import { SessionProvider, signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from "next/image";
 
 export default function NavBar({ children }) {
 
@@ -11,46 +12,11 @@ export default function NavBar({ children }) {
   return (
     <header className="bg-white ">
 
-      {/* <nav className="mx-20 flex justify-between">
-          <div>
-            <img className="w-48" src="/logo1.png" alt="" />
-          </div>
-          <div className="flex justify-center items-center">
-            <ul className="flex gap-8">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/service">Service</Link>
-              </li>
-              <li>
-                <Link href="/">Contact Us</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="flex items-center">
-            {session?.user ? (
-              <>
-                <p className="text-sky-600">{session.user.name}</p>
-                <button className="bg-blue-600 text-white px-5 py-2 rounded-xl" onClick={() => signOut()}>
-                  Logout
-                </button>
-              </>
-            ) : (
-              <button className="bg-blue-600 text-white px-5 py-2 rounded-xl" onClick={signIn}>
-                Login
-              </button>
-            )}
-          </div>
-        </nav> */}
-
-
-
       <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" class="flex items-center">
-            <img className="w-48" src="/logo1.png" alt="" />
-          </a>
+          <Link href="/" class="flex items-center">
+            <Image height={192} width={192} src="/logo1.png" alt="" />
+          </Link>
           <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -60,16 +26,16 @@ export default function NavBar({ children }) {
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <a href="/" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home</a>
+                <Link href="/" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Home</Link>
               </li>
               <li>
-                <a href="/service" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+                <Link href="/service" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</Link>
               </li>
               <li>
-                <a href="/searchorder" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cek Order</a>
+                <Link href="/searchorder" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cek Order</Link>
               </li>
               <li>
-                <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                <Link href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</Link>
               </li>
             </ul>
           </div>

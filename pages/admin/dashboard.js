@@ -48,7 +48,10 @@ export default function Dashboard({ orderservice, service }) {
         },
       }) => {
         return (
-          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+          <tr
+            key={id}
+            class="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+          >
             <th
               scope="row"
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -226,49 +229,49 @@ export default function Dashboard({ orderservice, service }) {
       }
     );
 
-  const generatetableservice = () =>
-    service.map(
-      ({
-        id: id,
-        attributes: {
-          nameService,
-          priceService,
-          serviceDescription,
-          pictService: {
-            data: [
-              {
-                attributes: { url },
-              },
-            ],
-          },
-        },
-      }) => {
-        return (
-          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              {id}
-            </th>
-            <td class="px-6 py-4">{nameService}</td>
-            <td class="px-6 py-4">{priceService}</td>
-            <td class="px-6 py-4">{serviceDescription}</td>
-            <td class="px-6 py-4 text-blue-600">
-              <a href={url}>Image</a>
-            </td>
-            <td class="px-6 py-4">
-              <a
-                href="#"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Edit
-              </a>
-            </td>
-          </tr>
-        );
-      }
-    );
+  // const generatetableservice = () =>
+  //   service.map(
+  //     ({
+  //       id: id,
+  //       attributes: {
+  //         nameService,
+  //         priceService,
+  //         serviceDescription,
+  //         pictService: {
+  //           data: [
+  //             {
+  //               attributes: { url },
+  //             },
+  //           ],
+  //         },
+  //       },
+  //     }) => {
+  //       return (
+  //         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+  //           <th
+  //             scope="row"
+  //             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+  //           >
+  //             {id}
+  //           </th>
+  //           <td class="px-6 py-4">{nameService}</td>
+  //           <td class="px-6 py-4">{priceService}</td>
+  //           <td class="px-6 py-4">{serviceDescription}</td>
+  //           <td class="px-6 py-4 text-blue-600">
+  //             <a href={url}>Image</a>
+  //           </td>
+  //           <td class="px-6 py-4">
+  //             <a
+  //               href="#"
+  //               class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+  //             >
+  //               Edit
+  //             </a>
+  //           </td>
+  //         </tr>
+  //       );
+  //     }
+  //   );
 
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
