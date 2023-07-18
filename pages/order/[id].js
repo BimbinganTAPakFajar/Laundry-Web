@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
   };
   const midtransres = await axios.post(
     // "http://localhost:3000/api/midtrans",
-    `${process.env.STRAPI_API_URL}/api/midtrans`,
+    `${process.env.NEXTAUTH_URL}/api/midtrans`,
     midtrans
   );
   console.log(midtransres.data, "MIDTRANS RES");
