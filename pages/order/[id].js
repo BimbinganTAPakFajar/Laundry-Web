@@ -2,6 +2,9 @@ import axios from "axios";
 import Script from "next/script";
 import { useEffect } from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
+import Router from "next/router";
+import { Redirect } from "next";
+import { redirect } from "next/dist/server/api-utils";
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
@@ -43,8 +46,8 @@ export default function PAYORDER({ snapToken }) {
       window.snap.pay(snapToken, {
         onSuccess: async function (result) {
           /* You may add your own implementation here */
-
           alert("Pembayaran berhasil!");
+          redirect("/");
         },
         onPending: function (result) {
           /* You may add your own implementation here */
@@ -53,6 +56,7 @@ export default function PAYORDER({ snapToken }) {
         onError: function (result) {
           /* You may add your own implementation here */
           alert("Pembayaran gagal!");
+          redirect("/");
         },
         onClose: function () {
           /* You may add your own implementation here */
