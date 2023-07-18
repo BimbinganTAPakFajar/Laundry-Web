@@ -1,6 +1,7 @@
 import axios from "axios";
 import AdminLayout from "@/components/layout/AdminLayout";
 import { useState } from "react";
+import { useSession, signIn } from "next-auth/react";
 export async function getServerSideProps(context) {
   const res = await axios.get(
     `${process.env.STRAPI_API_URL}/api/order-services?populate=*`
@@ -15,7 +16,18 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Dashboard({ orderservice, service }) {
+export default function Dashboard({ orderservice }) {
+  // const { status } = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     return "Anda harus memiliki akun untuk memesan";
+  //   },
+  // });
+
+  // if (status == "loading") {
+  //   return signIn();
+  // }
+
   console.log(orderservice, "Check");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -228,6 +240,7 @@ export default function Dashboard({ orderservice, service }) {
         );
       }
     );
+  console.log(orderservice, "TEST");
 
   // const generatetableservice = () =>
   //   service.map(
