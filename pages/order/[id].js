@@ -3,6 +3,7 @@ import Script from "next/script";
 import { useEffect } from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import Router from "next/router";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
@@ -36,12 +37,9 @@ export async function getServerSideProps(context) {
     props: { snapToken }, // will be passed to the page component as props
   };
 }
-let router = useRouter();
-function redirect() {
-  router.push("/");
-}
 
 export default function PAYORDER({ snapToken }) {
+  let router = useRouter();
   console.log(snapToken);
   const payNow = () => {
     if (typeof window !== "undefined") {
@@ -49,7 +47,7 @@ export default function PAYORDER({ snapToken }) {
         onSuccess: async function (result) {
           /* You may add your own implementation here */
           alert("Pembayaran berhasil!");
-          redirect();
+          router.push("/");
         },
         onPending: function (result) {
           /* You may add your own implementation here */
@@ -58,12 +56,11 @@ export default function PAYORDER({ snapToken }) {
         onError: function (result) {
           /* You may add your own implementation here */
           alert("Pembayaran gagal!");
-          redirect();
         },
         onClose: function () {
           /* You may add your own implementation here */
           alert("Silahkan melanjutkan pembayaran di halaman pesanan");
-          redirect();
+          router.push("/");
         },
       });
     }
