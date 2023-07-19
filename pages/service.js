@@ -31,50 +31,20 @@ export default function Service({ service }) {
           },
         },
       }) => {
+        let href = "";
+        if (id == 1) {
+          href = "https://forms.gle/cTVeH6tBVQZR8WfF8";
+        } else if (id == 2) {
+          href = "https://forms.gle/Px1UzwgrauoHgyVg8";
+        } else if (id == 3) {
+          href = "https://forms.gle/WbgCTVAgeA5whZsj9";
+        } else if (id == 4) {
+          href = "https://forms.gle/1g9HQDewYRGeY7rM7";
+        }
         return (
-          // <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          //   <a href="#">
-          //     <img
-          //       class="rounded-t-lg object-contain w-full"
-          //       src={url}
-          //       alt=""
-          //     />
-          //   </a>
-          //   <div class="p-5">
-          //     <a href="#">
-          //       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          //         {nameService}
-          //       </h5>
-          //     </a>
-          //     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          //       {serviceDescription}
-          //     </p>
-          //     <a
-          //       href="https://forms.gle/o2DKxWHVtEAjo4xb6"
-          //       class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          //     >
-          //       Pesan
-          //       <svg
-          //         class="w-3.5 h-3.5 ml-2"
-          //         aria-hidden="true"
-          //         xmlns="http://www.w3.org/2000/svg"
-          //         fill="none"
-          //         viewBox="0 0 14 10"
-          //       >
-          //         <path
-          //           stroke="currentColor"
-          //           stroke-linecap="round"
-          //           stroke-linejoin="round"
-          //           stroke-width="2"
-          //           d="M1 5h12m0 0L9 1m4 4L9 9"
-          //         />
-          //       </svg>
-          //     </a>
-          //   </div>
-          // </div>
           <div key={id}>
             <a
-              href="https://forms.gle/o2DKxWHVtEAjo4xb6"
+              href={href}
               class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
             >
               <img
@@ -88,6 +58,9 @@ export default function Service({ service }) {
                 </h5>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   {serviceDescription}
+                </p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {priceService}
                 </p>
               </div>
             </a>
