@@ -60,7 +60,7 @@ export default function Service({ service }) {
                   {serviceDescription}
                 </p>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  {priceService}
+                  Rp{priceService}/Kg
                 </p>
               </div>
             </a>
