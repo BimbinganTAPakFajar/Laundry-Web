@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export async function getServerSideProps(context) {
   const { id } = context.query;
   const res = await axios.get(
-    `${process.env.STRAPI_API_URL}/api/order-services?populate=*&filters[UUID][$eq]=${id}`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/order-services?populate=*&filters[UUID][$eq]=${id}`
   );
   const orderservice = res.data.data;
   const {

@@ -7,7 +7,7 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   const chosenService = id;
   const res = await axios.get(
-    `${process.env.STRAPI_API_URL}/api/laundry-services/${chosenService}?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/laundry-services/${chosenService}?populate=*`
   );
   // const res = await axios.get("http://127.0.0.1:1337/api/laundry-services?populate=*");
   // console.log(res, "hehehehe");

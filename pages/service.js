@@ -2,7 +2,7 @@ import axios from "axios";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 export async function getServerSideProps(context) {
   const res = await axios.get(
-    `${process.env.STRAPI_API_URL}/api/laundry-services?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/laundry-services?populate=*`
   );
   console.log(res, "hehehehe");
   const service = res.data.data;

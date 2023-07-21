@@ -1,10 +1,10 @@
 import axios from "axios";
 import AdminLayout from "@/components/layout/AdminLayout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 export async function getServerSideProps(context) {
   const res = await axios.get(
-    `${process.env.STRAPI_API_URL}/api/order-services?populate=*`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/order-services?populate=*`
   );
   // const res2 = await axios.get(
   //   "http://127.0.0.1:1337/api/laundry-services?populate=*"
@@ -27,22 +27,55 @@ export default function Dashboard({ orderservice }) {
   // if (status == "loading") {
   //   return signIn();
   // }
-
-  console.log(orderservice, "Check");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch(
-      "${process.env.STRAPI_API_URL}/api/order-services/$" + id
-    );
-  };
-
+  const [currentOrders, setCurrentOrders] = useState(orderservice);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [weightInput, setWeightInput] = useState("");
   const [selectedOrder, setSelectedOrder] = useState({});
   const [selectedStatus, setSelectedStatus] = useState({});
+  const updateOrders = async () => {
+    console.log("UPDATING");
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/order-services?populate=*`
+      );
+      const orders = res.data.data;
+      setCurrentOrders(orders);
+    } catch (error) {
+      console.log("error in updating", error);
+    }
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log("ENV", process.env.NEXT_PUBLIC_STRAPI_API_URL);
+    console.log("ORDER ID", selectedOrder.id);
+    console.log("WEIGHT INPUT", weightInput);
+    try {
+      const res = await axios(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/order-services/${selectedOrder.id}`,
+        {
+          method: "PUT",
+          data: {
+            data: {
+              weight: weightInput,
+            },
+          },
+        }
+      );
+
+      await updateOrders();
+    } catch (error) {
+      console.log("ERROR", error);
+    } finally {
+      setIsModalOpen(false);
+    }
+  };
+  useEffect(() => {
+    console.log(selectedOrder.id);
+  }, [selectedOrder]);
   const generatetableorder = () =>
-    orderservice.map(
+    currentOrders.map(
       ({
-        id: id,
+        id,
         attributes: {
           weight,
           pickupDate,
@@ -146,6 +179,7 @@ export default function Dashboard({ orderservice }) {
                                 Berat Laundry
                               </label>
                               <input
+                                onChange={(e) => setWeightInput(e.target.value)}
                                 type="number"
                                 name="weight"
                                 id={`${id}weight`}
@@ -169,6 +203,7 @@ export default function Dashboard({ orderservice }) {
                 class="block text-blue-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:underline "
                 type="button"
                 onClick={() => {
+                  console.log("ID ONCLICK", id);
                   setSelectedOrder({ id, isReady });
                   setIsModalOpen(true);
                 }}
@@ -222,6 +257,7 @@ export default function Dashboard({ orderservice }) {
                             Berat Laundry
                           </label>
                           <input
+                            onChange={(e) => setWeightInput(e.target.value)}
                             type="number"
                             name="weight"
                             id={`${id}weight`}
@@ -230,6 +266,14 @@ export default function Dashboard({ orderservice }) {
                             required
                           />
                         </div>
+                        <button
+                          data-modal-hide="defaultModal"
+                          type="button"
+                          onClick={(e) => onSubmit(e)}
+                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                          Simpan
+                        </button>
                       </form>
                     </div>
                   </div>
@@ -240,7 +284,6 @@ export default function Dashboard({ orderservice }) {
         );
       }
     );
-  console.log(orderservice, "TEST");
 
   // const generatetableservice = () =>
   //   service.map(

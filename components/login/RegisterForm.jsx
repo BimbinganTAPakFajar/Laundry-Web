@@ -12,7 +12,7 @@ export default function Register() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${process.env.STRAPI_API_URL}/api/auth/local/register`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/auth/local/register`, {
             headers: {
                 'Content-Type': 'application/json',
             },

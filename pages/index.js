@@ -6,7 +6,7 @@ import DefaultLayout from "@/components/layout/DefaultLayout";
 import Link from "next/link";
 export async function getServerSideProps(context) {
   const res2 = await axios.get(
-    `${process.env.STRAPI_API_URL}/api/landing-page`
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/landing-page`
   );
   const landing = res2.data.data;
   return {
