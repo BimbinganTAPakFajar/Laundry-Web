@@ -22,6 +22,7 @@ export default function Service({ service }) {
           nameService,
           priceService,
           serviceDescription,
+          formLink,
           pictService: {
             data: [
               {
@@ -31,20 +32,10 @@ export default function Service({ service }) {
           },
         },
       }) => {
-        let href = "";
-        if (id == 1) {
-          href = "https://forms.gle/cTVeH6tBVQZR8WfF8";
-        } else if (id == 2) {
-          href = "https://forms.gle/Px1UzwgrauoHgyVg8";
-        } else if (id == 3) {
-          href = "https://forms.gle/WbgCTVAgeA5whZsj9";
-        } else if (id == 4) {
-          href = "https://forms.gle/1g9HQDewYRGeY7rM7";
-        }
         return (
           <div key={id}>
             <a
-              href={href}
+              href={formLink}
               class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
             >
               <img
