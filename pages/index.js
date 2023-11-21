@@ -37,6 +37,7 @@ export default function Home({ landing }) {
               {slogan_2}
             </div>
           </div>
+          <div>Hello World</div>
         </div>
 
         <div className="flex justify-center">
